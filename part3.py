@@ -1,3 +1,11 @@
+"""
+Optimal Path Finding with Time Constraint
+
+This part takes an input of intersections (with costs of edges and cooldown time), start intersection,
+end intersection, max time limit
+and finds an optimal path between the two given intersections which has a cooldown time less than max limit
+"""
+
 from part1 import adjacency_list_to_matrix, remove_spaces
 import re
 import copy

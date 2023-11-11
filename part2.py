@@ -1,7 +1,7 @@
 """
-Part 2: Optimal Path Finding
+Optimal Path Finding
 
-This part takes an input of intersections, start intersection and end intersection
+This part takes an input of intersections (with costs of edges), start intersection and end intersection
 and finds an optimal path between the two given intersections
 """
 
