@@ -47,7 +47,12 @@ Part 2 was solved in part2.py. Particularly, the function _tsp_with_constraints_
 
 For ease of use, it is recommended to use the _find_optimal_path_ wrapper function, which simply takes an input string (e.g. a->b ($4), b->c ($5), c->d ($3), d->b ($7), a->c ($4), d->a ($1)), a starting and an ending node. 
 
-### Part 3 -- finding the optimal path that goes through every node
+### Part 3 -- finding the optimal path that goes through every node but minimizing cooldown time
+Part 3 adds further constraints to the problem in part2 by adding another parameter to keep track off while minimizing cost. Similar to part2, majority of the logic is in _tsp_part3_, which takes an adjacency matrix, starting and ending nodes, and a max cooldown. 
+
+Further matching part2, it is recommended to use _find_optimal_path_part3_, which takes the starting intersection, ending intersection, max cooling time, and the input string. 
+
+NOTE: All other functions not mentioned in any of these files are helper functions (for example, parsing the input string and extracting cost/cooldownm time, or removing spaces)
 
 
 
