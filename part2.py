@@ -1,42 +1,5 @@
-import re
-
-def tsp(graph):
-    nodes = list(graph.keys())
-    n = len(nodes)
-    memo = {}
-
-    def tsp_helper(mask, pos):
-        if mask == (1 << n) - 1:
-            cost = graph[nodes[pos]].get(nodes[0], float('inf'))
-            return cost, [nodes[pos]] if cost != float('inf') else []
-
-        if (mask, pos) in memo:
-            return memo[(mask, pos)]
-
-        best_cost = float('inf')
-        best_path = []
-
-        for next_pos in range(n):
-            if (mask >> next_pos) & 1 == 0 and nodes[next_pos] in graph[nodes[pos]] and graph[nodes[pos]][nodes[next_pos]] > 0:
-                new_mask = mask | (1 << next_pos)
-                cost, path = tsp_helper(new_mask, next_pos)
-                total_cost = graph[nodes[pos]][nodes[next_pos]] + cost
-
-                if total_cost < best_cost:
-                    best_cost = total_cost
-                    best_path = [nodes[pos]] + path
-
-        memo[(mask, pos)] = (best_cost, best_path)
-        return best_cost, best_path
-
-    # Start from node 'a' (assuming 'a' is in the graph)
-    start_node = 'a'
-    start_pos = nodes.index(start_node)
-    _, optimal_path = tsp_helper(1 << start_pos, start_pos)
-
-    return optimal_path
-
-from part1 import adjacency_list_to_matrix, display_adjacency_matrix
+import itertools
+import part1, re
 
 def remove_spaces(input_string):
     return input_string.replace(" ", "")
@@ -52,23 +15,52 @@ def parse_input_string(matrix, input_string):
         target, cost = target_with_cost.split("($")
         cost = int(cost[:-1])
 
+        print(source, target)
         assert matrix[source][target] == 1
         
         matrix[source][target] = cost
+def tsp_with_constraints(adjacency_matrix, start_node, end_node):
+    # Get the list of nodes from the keys of the matrix
+    nodes = list(adjacency_matrix.keys())
+    
+    # Generate all possible permutations of nodes excluding start and end nodes
+    nodes.remove(start_node)
+    nodes.remove(end_node)
+    permutations = itertools.permutations(nodes)
+    
+    # Add start and end nodes to the permutations
+    permutations = [(start_node,) + path + (end_node,) for path in permutations]
+    
+    # Initialize variables to store the minimum cost and corresponding path
+    min_cost = float('inf')
+    min_path = None
+    
+    # Iterate through all permutations
+    for path in permutations:
+        # Calculate the total cost for the current path
+        cost = 0
+        for i in range(len(path) - 1):
+            cost += adjacency_matrix[path[i]][path[i+1]]
+        
+        # Update minimum cost and path if the current path is better
+        if cost < min_cost:
+            min_cost = cost
+            min_path = path
+    
+    return min_path, min_cost
 
-def calc_cost(matrix, path):
-    cost = 0
-    for i in range(0, len(path)-1):
-        cost += matrix[path[i]][path[i+1]]
-    return cost
 
-def find_optimal_path(start_inter, end_inter, input_string):
-    filtered_str = re.sub(r'\(\$[0-9]+\)', '', input_string)
-    matrix = adjacency_list_to_matrix(filtered_str)
 
-    parse_input_string(matrix, input_string)
+def find_optimal_path(input_str, start, end):
+    # Remove the '($Number)' from the input string
+    filtered_str = re.sub(r'\(\$[0-9]+\)', '', input_str) 
 
-    optimal_path = tsp(matrix)
-    return calc_cost(matrix, optimal_path), optimal_path
+    # Make unweighted adjacency matrix
+    matrix = part1.adjacency_list_to_matrix(filtered_str)
 
-input_str = "a->b ($4), b->c ($5), c->d ($3), d->b ($4), a->c ($4), d->a ($1)"
+    # Convert to weighted matrix
+    parse_input_string(matrix, input_str)
+
+    min_path, min_cost = tsp_with_constraints(matrix, start, end)
+
+    return min_path, min_cost

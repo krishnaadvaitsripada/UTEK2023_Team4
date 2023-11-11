@@ -25,7 +25,7 @@ def adjacency_list_to_matrix(adj_list):
 
     for intersection_i in intersections:
         for intersection_j in intersections:
-            matrix[intersection_i][intersection_j] = 0
+            matrix[intersection_i][intersection_j] = float('inf')
     
     for intersection_pair in intersection_pairs: 
         matrix[intersection_pair[0].strip()][intersection_pair[1].strip()] = 1
@@ -52,5 +52,5 @@ def display_adjacency_matrix(adjacency_matrix):
 
 
 
-matrix = adjacency_list_to_matrix("a->b, b->c, c->d, d->b") #Row is source, Col is target
-display_adjacency_matrix(matrix)
+# matrix = adjacency_list_to_matrix("a->b, b->c, c->d, d->b") #Row is source, Col is target
+# display_adjacency_matrix(matrix)
