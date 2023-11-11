@@ -35,17 +35,10 @@ git clone https://github.com/krishnaadvaitsripada/UTEK2023_Team4.git
 ```
 You should see the repository in your file system now. 
 
-### Running the program
-Our project is organized into multiple files, each for a different part of the problem statement. To run a particular part of the program, follow these steps:
+The general format of the files is that each file corresponds to the respective part in the problem statement. For example, part1.py corresponds to part 1 of the problem statement. 
 
-1) Open your preferred integrated development environment (IDE) on your computer.
-2) Navigate to the directory where you cloned the repository and open the specific file you want to run.
-3) Run the file using the IDE's run or execute command.
+### Part 1 -- adjacency list to adjacency matrix
+In part1.py, the main function of concern is _adjacency_list_to_matrix_. It takes an adjacency list as an input (e.g. a->b, b->c, c->d, d->b), and returns an adjacency matrix (which is just a nested dictionary). 
 
-**Example:**
+This adjacency matrix can be displayed in a tabular format by utilising the function _display_adjacency_matrix_, which takes an adjacency matrix as an output.
 
-To run the adjacency matrix display part, open the **part1.py** file and run it.
-
-```
-python part1.py
-```
