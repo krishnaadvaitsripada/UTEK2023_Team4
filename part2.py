@@ -19,6 +19,7 @@ def parse_input_string(matrix, input_string):
         assert matrix[source][target] == 1
         
         matrix[source][target] = cost
+        
 def tsp_with_constraints(adjacency_matrix, start_node, end_node):
     # Get the list of nodes from the keys of the matrix
     nodes = list(adjacency_matrix.keys())
@@ -48,8 +49,6 @@ def tsp_with_constraints(adjacency_matrix, start_node, end_node):
             min_path = path
     
     return min_path, min_cost
-
-
 
 def find_optimal_path(input_str, start, end):
     # Remove the '($Number)' from the input string
