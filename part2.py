@@ -35,6 +35,13 @@ def parse_input_string(matrix, input_string):
         matrix[source][target] = cost
         
 def tsp_with_constraints(adjacency_matrix, start_node, end_node):
+    """
+    Given an adjacency matrix (e.g. from Part 1), and a starting node and an ending node,
+    it returns the optimal path (in terms of cost) that traverses through everything, alongside the total
+    cost of the optimal path.
+
+    If there is no optimal path, it returns None, with the total cost being Infinite. 
+    """
     # Get the list of nodes from the keys of the matrix
     nodes = list(adjacency_matrix.keys())
     
