@@ -2,7 +2,7 @@
 
 This is the repository for the University of Toronto Engineering Kompetitions (UTEK) 2023 for the Programming competition.
 
-The competition package with the Problem Statement is included in the 'documents' folder.
+The competition package with the Problem Statement is included in the `documents` folder.
 
 Team members: 
 * Krishna Advait Sripada
