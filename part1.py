@@ -49,5 +49,5 @@ def display_adjacency_matrix(adjacency_matrix):
 
 
 
-matrix = adjacency_list_to_matrix("a->b, b->c, c->d, d->b")
-display_adjacency_matrix(matrix)
+# matrix = adjacency_list_to_matrix("a->b, b->c, c->d, d->b")
+# display_adjacency_matrix(matrix)
