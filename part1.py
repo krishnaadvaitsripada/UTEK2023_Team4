@@ -4,7 +4,8 @@ Graph Construction
 This part takes an input of intersections, and organizes it an adjacency matrix fashion
 """
 
-
+def remove_spaces(input_string):
+    return input_string.replace(" ", "")
 
 def adjacency_list_to_matrix(adj_list):
     adj_list = adj_list.split(',')
@@ -12,9 +13,10 @@ def adjacency_list_to_matrix(adj_list):
     intersection_pairs = []
     for intersection_pair in adj_list:
         intersection_pair = intersection_pair.split("->")
-        intersection_pairs.append(intersection_pair)
-        for intersection in intersection_pair:
-            intersections.append(intersection.strip())
+        if len(intersection_pair) == 2:
+            intersection_pairs.append(intersection_pair)
+            for intersection in intersection_pair:
+                intersections.append(intersection.strip())
     
     intersections = set(intersections) # Remove duplicates
     matrix = {}
@@ -31,7 +33,7 @@ def adjacency_list_to_matrix(adj_list):
     return matrix
 
 def display_adjacency_matrix(adjacency_matrix):
-    headers = list(sorted((adjacency_matrix.keys())))
+    headers = list((adjacency_matrix.keys()))
 
     print("  |", end="")
     for header in headers:
@@ -49,5 +51,5 @@ def display_adjacency_matrix(adjacency_matrix):
 
 
 
-# matrix = adjacency_list_to_matrix("a->b, b->c, c->d, d->b")
-# display_adjacency_matrix(matrix)
+matrix = adjacency_list_to_matrix("a->b, b->c, c->d, d->b")
+display_adjacency_matrix(matrix)
