@@ -1,11 +1,13 @@
-import itertools
-import part1, re
+"""
+Part 2: Optimal Path Finding
 
-def remove_spaces(input_string):
-    """
-    Removes all spaces from input_string
-    """
-    return input_string.replace(" ", "")
+This part takes an input of intersections, start intersection and end intersection
+and finds an optimal path between the two given intersections
+"""
+
+import itertools
+from part1 import remove_spaces, adjacency_list_to_matrix
+import re
 
 def parse_input_string(matrix, input_string):
     """
@@ -76,7 +78,7 @@ def find_optimal_path(input_str, start, end):
     filtered_str = re.sub(r'\(\$[0-9]+\)', '', input_str) 
 
     # Make unweighted adjacency matrix
-    matrix = part1.adjacency_list_to_matrix(filtered_str)
+    matrix = adjacency_list_to_matrix(filtered_str)
 
     # Convert to weighted matrix
     parse_input_string(matrix, input_str)

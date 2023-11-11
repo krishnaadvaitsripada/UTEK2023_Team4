@@ -5,10 +5,17 @@ This part takes an input of intersections, and organizes it an adjacency matrix 
 """
 
 def remove_spaces(input_string):
+    """
+    Removes all spaces from input_string
+    """
     return input_string.replace(" ", "")
 
 def adjacency_list_to_matrix(adj_list):
-    adj_list = adj_list.split(',')
+    """
+    Returns the adjacency matrix for the graph in the input string
+    """
+    adj_list = adj_list.split(',') # Obtain the individual node pairs
+
     intersections = []
     intersection_pairs = []
     
@@ -39,6 +46,9 @@ def adjacency_list_to_matrix(adj_list):
     return matrix
         
 def display_adjacency_matrix(adjacency_matrix):
+    """
+    Print the adjacency matrix in organized fashion
+    """
     headers = list(adjacency_matrix.keys())
     max_header_length = max(len(header) for header in headers)
 
