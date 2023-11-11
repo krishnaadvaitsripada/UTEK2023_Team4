@@ -52,5 +52,5 @@ def display_adjacency_matrix(adjacency_matrix):
 
 
 
-matrix = adjacency_list_to_matrix("a->b, b->c, c->d, d->b")
+matrix = adjacency_list_to_matrix("a->b, b->c, c->d, d->b") #Row is source, Col is target
 display_adjacency_matrix(matrix)
