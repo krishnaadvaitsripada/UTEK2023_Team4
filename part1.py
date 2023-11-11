@@ -11,6 +11,8 @@ def adjacency_list_to_matrix(adj_list):
     adj_list = adj_list.split(',')
     intersections = []
     intersection_pairs = []
+    
+    # Extract the intersections and the intersection pairs
     for intersection_pair in adj_list:
         intersection_pair = intersection_pair.split("->")
         if len(intersection_pair) == 2:
@@ -20,13 +22,17 @@ def adjacency_list_to_matrix(adj_list):
     
     intersections = set(intersections) # Remove duplicates
     matrix = {}
+    
+    # Create an empty 2D matrix
     for intersection in intersections:
         matrix[intersection] = {}
 
+    # Fill all the matrix values with infinity
     for intersection_i in intersections:
         for intersection_j in intersections:
             matrix[intersection_i][intersection_j] = float('inf')
     
+    # Fill in the cells with '1' for the 'from' and 'to' nodes in the graph
     for intersection_pair in intersection_pairs: 
         matrix[intersection_pair[0].strip()][intersection_pair[1].strip()] = 1
     
@@ -57,6 +63,3 @@ def display_adjacency_matrix(adjacency_matrix):
             print(f" {adjacency_matrix[row][col]:>{max_combined_length}} |", end="")
         print()
 
-
-# matrix = adjacency_list_to_matrix("a->b, b->c, c->d, d->b") #Row is source, Col is target
-# display_adjacency_matrix(matrix)
