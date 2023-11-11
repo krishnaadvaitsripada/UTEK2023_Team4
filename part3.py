@@ -84,9 +84,3 @@ def find_optimal_path_part3(start_inter, end_inter, max_time, input_string):
     # Find the best possible cost and path given start intersection, end intersection and max time
     best_path, best_cost = tsp_part3(matrix_cost, matrix_time, start_inter, end_inter, max_time)
     return best_cost, best_path
-
-s2 = "a->b ($4, 1 min cooldown) , b->c ($5, 1 min cooldown) , c->d ($3, 3 min cooldown) , b->d ($7, 3 min" +\
-" cooldown), a->c ($4, 3 min cooldown), d->a ($1, 4 min cooldown)"
-
-a, b = find_optimal_path_part3('a', 'd', 5, s2)
-print(a,b)
