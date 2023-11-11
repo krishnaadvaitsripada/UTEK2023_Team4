@@ -19,14 +19,14 @@ Pre-requisites:
 
 _Note: This instruction document assumes a Windows OS. Commands may vary on your OS. Google your equivalent commands if you are using another OS_
 
-Type the commands
+Type the following commands to confirm you meet the requirements.
 ```
 python --version
 git --version
 ```
-To confirm you meet the requirements. If you do not, see https://python.org/ and https://git-scm.com/ for instructions for installation/upgrading. 
+If you do not, see https://python.org/ and https://git-scm.com/ for instructions for installation/upgrading. 
 
-### Cloning the repo
+### Cloning the repository
 Open your computer's command prompt. 
 Navigate to the directory you wish to clone the repo using the command, and clone the repo using the following lines
 ```
