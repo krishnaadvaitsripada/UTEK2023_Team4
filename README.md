@@ -42,3 +42,12 @@ In part1.py, the main function of concern is _adjacency_list_to_matrix_. It take
 
 This adjacency matrix can be displayed in a tabular format by utilising the function _display_adjacency_matrix_, which takes an adjacency matrix as an output.
 
+### Part 2 -- finding the optimal path that goes through every node
+Part 2 was solved in part2.py. Particularly, the function _tsp_with_constraints_ (referring to the fact that Part 2 can be modelled after the Travelling Salesman Problem {TSP} ). The _tsp_with_constraints_ function takes an adjacency matrix (as referred to earlier) alongside a starting and an ending node. 
+
+For ease of use, it is recommended to use the _find_optimal_path_ wrapper function, which simply takes an input string (e.g. a->b ($4), b->c ($5), c->d ($3), d->b ($7), a->c ($4), d->a ($1)), a starting and an ending node. 
+
+### Part 3 -- finding the optimal path that goes through every node
+
+
+
