@@ -18,21 +18,36 @@ def adjacency_list_to_matrix(adj_list):
     
     intersections = set(intersections) # Remove duplicates
     matrix = {}
+    for intersection in intersections:
+        matrix[intersection] = {}
+
     for intersection_i in intersections:
-        matrix[intersection_i] = {}
+        for intersection_j in intersections:
+            matrix[intersection_i][intersection_j] = 0
     
     for intersection_pair in intersection_pairs: 
         matrix[intersection_pair[0].strip()][intersection_pair[1].strip()] = 1
     
-
     return matrix
 
+def display_adjacency_matrix(adjacency_matrix):
+    headers = list(sorted((adjacency_matrix.keys())))
 
-    
+    print("  |", end="")
+    for header in headers:
+        print(f" {header} |", end="")
+    print()
+
+    print("--+" + "---+" * len(headers))
+
+    for row in headers:
+        print(f"{row} |", end="")
+        for col in headers:
+            print(f" {adjacency_matrix[row][col]} |", end="")
+        print()
 
 
 
 
-adjacency_list_to_matrix("a->b, b->c, c->d, d->b")
-
-
+matrix = adjacency_list_to_matrix("a->b, b->c, c->d, d->b")
+display_adjacency_matrix(matrix)
