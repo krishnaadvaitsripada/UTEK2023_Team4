@@ -2,22 +2,36 @@ import itertools
 import part1, re
 
 def remove_spaces(input_string):
+    """
+    Removes all spaces from input_string
+    """
     return input_string.replace(" ", "")
 
 def parse_input_string(matrix, input_string):
+    """
+    Inputs: 
+        matrix - Unweighted adjacency matrix (dict within a dict) 
+        input_string - Adjacency list with costs (e.g. )
+    
+    Returns:
+        A weighted matrix (the weights being the costs from the input_string adjacency list)
+    """
+
     input_string = remove_spaces(input_string)
 
     edges_with_cost = input_string.split(",")
 
     for edge in edges_with_cost:
-        
+
+        # Split each edge into the source, target and cost
         source, target_with_cost = edge.split("->")
         target, cost = target_with_cost.split("($")
         cost = int(cost[:-1])
 
-        print(source, target)
+        # The cost should initially be 1 in the matrix
         assert matrix[source][target] == 1
         
+        # Update cost
         matrix[source][target] = cost
         
 def tsp_with_constraints(adjacency_matrix, start_node, end_node):
