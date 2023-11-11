@@ -47,10 +47,6 @@ def tsp_with_constraints(adjacency_matrix, start_node, end_node):
     if start_node not in adjacency_matrix or end_node not in adjacency_matrix:
         raise ValueError("Start or end node not in the adjacency matrix.")
 
-    # Check if start_node and end_node are different
-    if start_node == end_node:
-        raise ValueError("Start and end nodes must be different.")
-
     # Get the list of nodes from the keys of the matrix
     nodes = list(adjacency_matrix.keys())
 
