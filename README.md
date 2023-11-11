@@ -14,7 +14,7 @@ Setup Instructions
 ------------------
 
 Pre-requisites: 
-* Python 3.9
+* Python (3.x is recommended)
 * Git
 
 _Note: This instruction document assumes a Windows OS. Commands may vary on your OS. Google your equivalent commands if you are using another OS_
