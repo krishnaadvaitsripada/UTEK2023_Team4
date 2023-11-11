@@ -44,8 +44,19 @@ def tsp_with_constraints(adjacency_matrix, start_node, end_node):
 
     If there is no optimal path, it returns None, with the total cost being Infinite. 
     """
+    if start_node not in adjacency_matrix or end_node not in adjacency_matrix:
+        raise ValueError("Start or end node not in the adjacency matrix.")
+
+    # Check if start_node and end_node are different
+    if start_node == end_node:
+        raise ValueError("Start and end nodes must be different.")
+
     # Get the list of nodes from the keys of the matrix
     nodes = list(adjacency_matrix.keys())
+
+    # Check if start_node and end_node are valid nodes
+    if start_node not in nodes or end_node not in nodes:
+        raise ValueError("Start or end node not in the list of nodes.")
     
     # Generate all possible permutations of nodes excluding start and end nodes
     nodes.remove(start_node)
