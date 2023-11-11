@@ -31,19 +31,20 @@ def adjacency_list_to_matrix(adj_list):
         matrix[intersection_pair[0].strip()][intersection_pair[1].strip()] = 1
     
     return matrix
-
+        
 def display_adjacency_matrix(adjacency_matrix):
-    headers = list((adjacency_matrix.keys()))
+    headers = list(adjacency_matrix.keys())
+    max_header_length = max(len(header) for header in headers)
 
-    print("  |", end="")
+    # Print headers
+    print(f"{' ' * (max_header_length + 2)}|", end="")
     for header in headers:
         print(f" {header} |", end="")
-    print()
+    print("\n" + "-" * (max_header_length + 2) + "+---" * len(headers))
 
-    print("--+" + "---+" * len(headers))
-
+    # Print matrix
     for row in headers:
-        print(f"{row} |", end="")
+        print(f"{row} {' ' * (max_header_length - len(row))} |", end="")
         for col in headers:
             print(f" {adjacency_matrix[row][col]} |", end="")
         print()
